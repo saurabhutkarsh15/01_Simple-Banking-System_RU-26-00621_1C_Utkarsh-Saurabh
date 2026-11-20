@@ -1,4 +1,7 @@
 import json
+from pathlib import Path
+
+FILE_PATH = Path(__file__).resolve().parent / "bank.txt"
 print("===== Welcome To My Simple Banking System =====")
 
 def create_account(account_info , next_accountnumber):
@@ -95,12 +98,12 @@ def check_balance(account_info):
     print("Current balance:", account_info[account]["balance"],"\n")
 
 def saved_accounts(account_info):
-    with open("bank.txt", "w") as file:
+    with open(FILE_PATH, "w") as file:
         json.dump(account_info , file , indent = 4)
 
 def load_acc():
     try:
-        with open("bank.txt", "r") as file:
+        with open(FILE_PATH, "r") as file:
             saved_data = json.load(file)
             account_info = {
                 int(number) : details
