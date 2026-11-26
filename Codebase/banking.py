@@ -2,7 +2,6 @@ import json
 from pathlib import Path
 
 FILE_PATH = Path(__file__).resolve().parent / "bank.txt"
-print("===== Welcome To My Simple Banking System =====")
 
 def create_account(account_info , next_accountnumber):
     name = input("Enter your name: ")
@@ -114,8 +113,11 @@ def load_acc():
     except (FileNotFoundError, json.JSONDecodeError):
         return{} 
 
-account_info = load_acc()
-next_accountnumber = max(account_info.keys(), default= 1000) + 1
+def main():
+    print("===== Welcome To My Simple Banking System =====")
+    account_info = load_acc()
+    next_accountnumber = max(account_info.keys(), default= 1000) + 1
+
 
 while True:
     print("1. Create New Account")
@@ -146,3 +148,6 @@ while True:
         break
     else:
         print("Invalid choice. Pleae select from 1-6.\n")
+
+if __name__ == "__main__":
+    main()
